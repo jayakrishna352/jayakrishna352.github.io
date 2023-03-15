@@ -2,20 +2,26 @@ const { providers, Wallet, Contract } = require("ethers");
 const dotenv = require("dotenv");
 dotenv.config();
 
-const API_KEY = process.env.API_KEY;
+const API_URL = process.env.API_URL;
+// const API_KEY = process.env.API_KEY;
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
 
 const contract = require("../Vote.json");
 
 // Provider
-const alchemyProvider = new providers.AlchemyProvider(
-  (network = "goerli"),
-  API_KEY
-);
+// const alchemyProvider = new providers.AlchemyProvider(
+//   (network = "goerli"),
+//   API_KEY
+// );
+const provider = new providers.JsonRpcProvider(API_URL);
 
 // Signer
-const signer = new Wallet(PRIVATE_KEY, alchemyProvider);
+// const signer = new Wallet(PRIVATE_KEY, alchemyProvider);
+const signer = new Wallet(
+  PRIVATE_KEY,
+  provider
+);
 
 // Contract
 module.exports.voteContract = () => {
