@@ -14,7 +14,7 @@ const contract = require("../Vote.json");
 //   (network = "goerli"),
 //   API_KEY
 // );
-const provider = new providers.JsonRpcProvider(API_URL);
+const provider = new providers.JsonRpcProvider(`${API_URL}`);
 
 // Signer
 // const signer = new Wallet(PRIVATE_KEY, alchemyProvider);
